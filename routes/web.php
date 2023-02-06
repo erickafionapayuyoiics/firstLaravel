@@ -71,6 +71,6 @@ Route::post('/user/search', [UserController::class, 'search'] )->name('user.sear
 
 Route::get('/show/{user}/{task}', [TaskController::class, 'show'] )->name('data.show');
 
-Route::post('/update/{user}/{task}', [TaskController::class, 'update'] )->name('data.update');
+Route::put('/update/{user}/{task}', [TaskController::class, 'update'] )->name('data.update');
 
-Route::get('/delete/{user}/{task}', [TaskController::class, 'delete'] )->name('data.delete');
+Route::delete('/delete/{user}/{task}', [TaskController::class, 'delete'] )->name('data.delete');

@@ -30,9 +30,9 @@ class TaskController extends Controller
         return redirect()->route('index', compact('user'));
     }
 
-    public function update(User $user, Task $task, Request $r){
+    public function update(User $user, Task $task, Request $request){
 
-        $task->update(['title' => $r->title, 'description' => $r->desc ]);
+        $task->update(['title' => $request->title, 'description' => $request->description ]);
 
 
         return redirect()->route('index', compact('user'));
@@ -41,9 +41,8 @@ class TaskController extends Controller
     public function delete(User $user, Task $task){
 
         $task->delete();
-        $tasks = Task::all();
 
-        return view('index', compact('user','tasks'));
+        return redirect()->route('index', compact('user'));
     }
 
 }
