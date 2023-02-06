@@ -84,13 +84,13 @@
                     <td>{{ $task->title}}</td>
                     <td>{{$task->description}}</td>
                     <td>
-                    <form method="put" action="{{route('data.show', [$user->id, $task->id])}}">
+                    <a href = "{{route('data.show', [$user->id, $task->id])}}">
                         @csrf 
                         @method('put')
                         <button type="submit">
                             Update
                         </button>   
-                    </form><br>
+                    </a><br>
                     <form method="post" action="{{route('data.delete', [$user->id, $task->id])}}">
                         @csrf
                         @method('delete')

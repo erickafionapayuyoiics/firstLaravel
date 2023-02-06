@@ -45,7 +45,7 @@
         <title>My First Project</title>
     </head>
 
-    <form method="put" action="{{route('data.update', [$user->id, $task->id])}}">
+    <form method="post" action="{{route('data.update', [$user->id, $task->id])}}">
         @csrf 
         @method('put')
         <h2>Welcome! Please sign up this form.</h2>
