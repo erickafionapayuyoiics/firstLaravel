@@ -14,33 +14,20 @@ class UserController extends Controller
         return view('user');
     }
 
-    /*public function validate(User $user, Request $request)
+    public function search(Request $request)
     {
         //Validate whether user is already signed up or not
-        /*$user = User::all()->where('name', $request->name);
+        $user = User::where('name', $request->name)->first();
         if($user===null)
         {
-            return redirect()->route('insert');
+            $user = User::create(['name' => $request->name, ]);
+            return redirect()->route('index', compact('user'));
         }
         else
         {
             return redirect()->route('index', compact('user'));
         }
 
-    }*/
-
-    public function search(Request $r)
-    {
-        $user = User::find(1);
-        //$tasks = User::find(1)->tasks;
-        //$tasks = Task::whereBelongsTo($user)->get();
-
-        //$tasks = Task::where('user_id', $user)->get();
-
-        //$tasks = $user->tasks();
-
-        return redirect()->route('index', compact('user'));
-        
     }
     
 }

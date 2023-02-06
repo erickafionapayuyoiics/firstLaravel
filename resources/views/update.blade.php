@@ -39,12 +39,13 @@
                 border-radius: 10px;
                 margin: 5px;
                 align-content: left;
+                text-align: left;
             }
         </style>
         <title>My First Project</title>
     </head>
 
-    <form method="post" action="{{route('data.update', $task->id)}}">
+    <form method="post" action="{{route('data.update', [$user->id, $task->id])}}">
         @csrf
         <h2>Welcome! Please sign up this form.</h2>
         <label for = "title">Task Title</label>
@@ -57,13 +58,10 @@
             <br>
             <label for = "desc">Task Description</label>
             <br>
-            <textarea style = "height: 50px;" 
-            id = "desc"
+            <textarea rows="4" cols="50" style = "height: 50px;" 
+            id = "description"
             type="text area"
-            name="desc"
-            class="@error('title') is-invalid @else is-valid @enderror">
-            {{$task->description}}
-            </textarea>
+            name="description">{{$task->description}}</textarea>
             <br>
             <button type="submit">
                 Update

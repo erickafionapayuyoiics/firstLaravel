@@ -16,34 +16,34 @@ class TaskController extends Controller
         
     }
 
-    public function show(Task $task)
+    public function show(User $user, Task $task)
     {
 
-        return view('update', compact('task'));
+        return view('update', compact('user','task'));
     }
 
-    public function insert( Request $request){
+    public function insert(User $user, Request $request){
         
 
-        $task = Task::create(['title' => $request->title, 'description' => $request->description , 'user_id' => $request->userid ]);
+        $task = Task::create(['title' => $request->title, 'description' => $request->description , 'user_id' => $user->id ]);
 
-        return redirect()->route('index');
+        return redirect()->route('index', compact('user'));
     }
 
-    public function update(Task $task, Request $r){
+    public function update(User $user, Task $task, Request $r){
 
         $task->update(['title' => $r->title, 'description' => $r->desc ]);
 
 
-        return redirect()->route('index');
+        return redirect()->route('index', compact('user'));
     }
 
-    public function delete(Task $task){
+    public function delete(User $user, Task $task){
 
         $task->delete();
         $tasks = Task::all();
 
-        return view('index', compact('tasks'));
+        return view('index', compact('user','tasks'));
     }
 
 }

@@ -38,14 +38,16 @@
                 height: 20px;
                 border-radius: 10px;
                 margin: 5px;
+                align-content: left;
+                text-align: left;
             }
         </style>
         <title>My First Project</title>
     </head>
 
-    <form method="post" action="{{route('data.insert')}}">
+    <form method="post" action="{{route('data.insert', $user->id)}}">
         @csrf
-        <h2>Welcome {{$user->name}}! Please sign up this form.</h2>
+        <h2>Welcome {{$user->name}}! Please fill in details to add task.</h2>
         
         <label for = "title">Task Title</label>
         <br>
@@ -56,12 +58,10 @@
             <br>
             <label for = "description">Task Description</label>
             <br>
-            <textarea style = "height: 50px;" 
+            <textarea rows="4" cols="50" style = "height: 50px;" 
             id = "description"
             type="text area"
-            name="description"
-            class="@error('title') is-invalid @else is-valid @enderror">
-            </textarea>
+            name="description"></textarea>
             <br>
             <button type="submit">
                 Add Task
@@ -83,10 +83,10 @@
                     <td>{{ $task->user_id}}</td>
                     <td>{{ $task->title}}</td>
                     <td>{{$task->description}}</td>
-                    <td><a href = "{{route('data.show', $task->id ) }}">
+                    <td><a href = "{{route('data.show', [$user->id, $task->id]  ) }}">
                         Update
                     </a><br>
-                    <a href = "{{route('data.delete', $task->id ) }}">
+                    <a href = "{{route('data.delete', [$user->id , $task->id] ) }}">
                         Delete
                     </a></td>
             </tr>

@@ -65,14 +65,12 @@ Route::get('/user', [UserController::class, 'user'])->name('user');
 
 Route::post('/validate', [TaskController::class, 'validate'] )->name('user.validate');
 
-Route::post('/insert', [TaskController::class, 'insert'] )->name('data.insert');
+Route::post('/insert/{user}', [TaskController::class, 'insert'] )->name('data.insert');
 
 Route::post('/user/search', [UserController::class, 'search'] )->name('user.search');
 
-//Route::post('/user/validate', [UserController::class, 'validate'] )->name('user.validate');
+Route::get('/show/{user}/{task}', [TaskController::class, 'show'] )->name('data.show');
 
-Route::get('/show/{task}', [TaskController::class, 'show'] )->name('data.show');
+Route::post('/update/{user}/{task}', [TaskController::class, 'update'] )->name('data.update');
 
-Route::post('/update/{task}', [TaskController::class, 'update'] )->name('data.update');
-
-Route::get('/delete/{task}', [TaskController::class, 'delete'] )->name('data.delete');
+Route::get('/delete/{user}/{task}', [TaskController::class, 'delete'] )->name('data.delete');
